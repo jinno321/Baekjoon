@@ -13,3 +13,4 @@ for i in range(1, N):
 
 for i in answer:
     print(i,end=" ")
+
