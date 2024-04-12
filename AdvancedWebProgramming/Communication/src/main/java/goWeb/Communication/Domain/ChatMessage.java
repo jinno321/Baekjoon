@@ -3,19 +3,22 @@ package goWeb.Communication.Domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
-@Table
 @Getter @Setter
-@ToString
-public class User {
-
+public class ChatMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
 
+    @ManyToOne
+    private User user;
+
+    private String message;
+
+    private LocalDateTime timestamp;
+
+    // Getter와 Setter
 }

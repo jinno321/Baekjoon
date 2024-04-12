@@ -1,21 +1,12 @@
 package goWeb.Communication.Repository;
 
-import goWeb.Communication.Domain.User;
+import goWeb.Communication.Domain.ChatMessage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 @Repository
-public interface UserRepository extends JpaRepository<User,Long> {
-    User findUserById(Long id);
-
-    void deleteUserById(Long id);
-
-
-
-
-
-
+public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> {
+    List<ChatMessage> findByUserId(Long userId);
 }

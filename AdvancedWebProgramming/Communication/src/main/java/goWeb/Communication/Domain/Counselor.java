@@ -15,7 +15,9 @@ public class Counselor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long counselorid;
+    private Long id;
+
+    private String name;
 
     public Counselor() {
 
