@@ -1,25 +1,12 @@
 import sys
-import math
 
 C, N = map(int, sys.stdin.readline().split())
-answer = float("inf")
-arr = [] * N
+cost_list = [list(map(int,sys.stdin.readline().split())) for _ in range(N)]
+dp = [1e7 for _ in range(C + 100)]
+dp[0] = 0
 
+for cost, num_customer in cost_list:
+    for i in range(num_customer, C + 100):
+        dp[i] = min(dp[i - num_customer] + cost, dp[i])
 
-for _ in range(N):
-    cost, cust = map(int, sys.stdin.readline().split())
-    arr.append((cost/cust,cost, cust))
-
-arr.sort()
-restcust = C
-nowcost = 0
-for i in range(N):
-    if restcust % arr[i][2] == 0:
-        answer = min(answer, nowcost + arr[i][1]*(restcust // arr[i][2]))
-        break
-    answer = min(answer, nowcost + arr[i][1] * (restcust // arr[i][2]+1))
-    nowcost += ((restcust // arr[i][2]) * arr[i][1])
-    restcust = restcust % arr[i][2]
-
-
-print(answer)
+print(min(dp[C:]))
